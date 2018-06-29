@@ -1,0 +1,20 @@
+version: '2'
+services:
+  roscore:
+    build: ./roscore
+    container_name: roscore
+    hostname: roscore
+    command:
+      - roscore
+  rosbridge:
+    build: ./rosbridge
+    container_name: rosbridge
+    hostname: rosbridge
+    environment:
+      - ROS_HOSTNAME=rosbridge
+      - ROS_MASTER_URI=http://roscore:11311
+    volumes:
+      - ./rosbridge/rosbridge:/opt/ros_ws/src/rosbridge
+    stdin_open: true
+    tty: true
+    command: /bin/bash
