@@ -12,7 +12,7 @@ services:
     hostname: rosbridge
     environment:
       - ROS_HOSTNAME=rosbridge
-      - ROS_MASTER_URI=http://roscore:11311
+      - ROS_MASTER_URI=http://${master}:11311
     volumes:
       - ./rosbridge/rosbridge:/opt/ros_ws/src/rosbridge
     stdin_open: true
