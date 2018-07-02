@@ -20,7 +20,7 @@
 1. start roscore & rosbridge using docker-compose
 
     ```bash
-    $ master=roscore;docker-compose up &
+    $ export master=roscore; export mqtt_password=XXXXXXXX; docker-compose up &
     ```
 
 ## start rosbridge without roscore (roscore is runnning on docker host)
@@ -34,7 +34,7 @@
 1. start rosbridge using outside roscore
 
     ```bash
-    $ docker-compose up rosbridge &
+    $ export mqtt_password=XXXXXXXX; docker-compose up rosbridge &
     ```
 
 ## stop roscore and rosbridge

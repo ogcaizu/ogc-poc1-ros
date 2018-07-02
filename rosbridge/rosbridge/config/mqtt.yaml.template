@@ -1,6 +1,6 @@
 mqtt:
   host: "${MQTT_HOST}"
-  port: 8883
+  port: ${MQTT_PORT}
+  username: "${MQTT_USERNAME}"
+  password: "${MQTT_PASSWORD}"
   cafile: "${CA_FILE}"
-  username: "ros"
-  password: "${ROS_PASSWORD}"

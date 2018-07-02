@@ -15,9 +15,10 @@ services:
     environment:
       - ROS_HOSTNAME=rosbridge
       - ROS_MASTER_URI=http://${master}:11311
+      - MQTT_HOST=mqtt.tech-sketch.jp
+      - MQTT_PORT=8883
+      - MQTT_USERNAME=ros
+      - MQTT_PASSWORD=${mqtt_password}
       - CA_FILE=/opt/secrets/ca.crt
-    volumes:
-      - ./rosbridge/rosbridge:/opt/ros_ws/src/rosbridge
-    stdin_open: true
-    tty: true
-    command: /bin/bash
+    command:
+      - /opt/entrypoint.sh
