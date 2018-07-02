@@ -1,3 +1,4 @@
 *.py[co]
 ca.crt
+mqtt.yaml
 .python-version
