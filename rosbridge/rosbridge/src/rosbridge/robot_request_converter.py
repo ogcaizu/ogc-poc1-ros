@@ -15,7 +15,7 @@ def convert_mqtt_to_ros(cmd_data, ros_publisher):
     try:
         r_cmd = cmd_data['r_cmd']
         if r_cmd not in ('Navi', 'Standby', 'Error'):
-            return 'failure: unknown r_cmd, {}'.format(r_cmd)
+            return 'failure: unknown r_cmd, r_cmd="{}"'.format(r_cmd)
 
         msg = message_type()
         msg.time = datetime.datetime.now(pytz.timezone('Asia/Tokyo')).strftime('%Y-%m-%d %H:%M:%S')

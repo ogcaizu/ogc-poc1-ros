@@ -17,6 +17,10 @@ def convert_ros_to_mqtt(msg):
         logger.errorf('failure: message type error')
         return
 
+    if msg.r_mode not in ('Navi', 'Standby', 'Error'):
+        logger.warnf('failure: unknown r_mode, r_mode="{}"'.format(msg.r_mode))
+        return
+
     timestamp = datetime.datetime.now(pytz.timezone('Asia/Tokyo')).strftime('%Y-%m-%dT%H:%M:%S.%f%z')
     return PAYLOAD_FMT.format(timestamp=timestamp,
                               time=msg.time,
