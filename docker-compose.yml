@@ -1,13 +1,13 @@
 version: '2'
 services:
   roscore:
-    build: ./roscore
+    image: tech-sketch/roscore
     container_name: roscore
     hostname: roscore
     command:
       - roscore
   rosbridge:
-    build: ./rosbridge
+    image: tech-sketch/rosbridge
     container_name: rosbridge
     hostname: rosbridge
     depends_on:
@@ -15,6 +15,7 @@ services:
     environment:
       - ROS_HOSTNAME=rosbridge
       - ROS_MASTER_URI=http://${master}:11311
+      - CA_FILE=/opt/secrets/ca.crt
     volumes:
       - ./rosbridge/rosbridge:/opt/ros_ws/src/rosbridge
     stdin_open: true

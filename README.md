@@ -12,7 +12,8 @@
 1. build containers
 
     ```bash
-    $ docker-compose build
+    $ docker build -t tech-sketch/roscore:latest ./roscore
+    $ docker build -t tech-sketch/rosbridge:latest ./rosbridge
     ```
 
 ### start rosbridge with roscore

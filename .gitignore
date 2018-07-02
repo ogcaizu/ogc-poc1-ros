@@ -1,1 +1,3 @@
 *.py[co]
+ca.crt
+.python-version

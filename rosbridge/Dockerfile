@@ -1,8 +1,11 @@
 FROM ros:kinetic
 MAINTAINER Nobuyuki Matsui <nobuyuki.matsui@gmail.com>
 
-RUN apt-get update && apt-get upgrade -y && \
-    mkdir -p /opt/ros_ws/src && \
+COPY ./secrets/ca.crt /opt/secrets/ca.crt
+COPY ./rosbridge /opt/ros_ws/src/rosbridge
+RUN apt-get update && apt-get upgrade -y && apt-get install python-pip python-dev -y && \
+    cd /opt/ros_ws/src/rosbridge && \
+    pip install -r requirements/common.txt && \
     echo "source /opt/ros/kinetic/setup.bash" >> /root/.bashrc && \
     echo "source /opt/ros_ws/devel/setup.bash" >> /root/.bashrc
 
