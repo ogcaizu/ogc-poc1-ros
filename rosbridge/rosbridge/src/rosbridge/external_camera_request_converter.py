@@ -19,7 +19,7 @@ def convert_mqtt_to_ros(cmd_data, ros_publisher):
 
         msg = message_type()
         msg.time = datetime.datetime.now(pytz.timezone('Asia/Tokyo')).strftime('%Y-%m-%d %H:%M:%S')
-        msg.id = int(cmd_data['id'])
+        msg.id = int(cmd_data['camera_id'])
         msg.c_cmd = c_cmd
 
         ros_publisher.publish(msg)
