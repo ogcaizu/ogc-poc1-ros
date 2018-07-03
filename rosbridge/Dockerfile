@@ -1,6 +1,8 @@
 FROM ros:kinetic
 MAINTAINER Nobuyuki Matsui <nobuyuki.matsui@gmail.com>
 
+ENV PYTHONUNBUFFERED 1
+
 COPY ./secrets/ca.crt /opt/secrets/ca.crt
 COPY ./entrypoint.sh /opt/entrypoint.sh
 COPY ./rosbridge /opt/ros_ws/src/rosbridge
