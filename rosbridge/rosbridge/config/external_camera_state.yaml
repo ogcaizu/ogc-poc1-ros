@@ -1,0 +1,4 @@
+destination: "ros2fiware"
+topics:
+  mqtt: "/external_camera/external_camera"
+  ros: "/ExternalCamera/state"
