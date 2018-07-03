@@ -8,7 +8,7 @@ from rosbridge.msg import c_state as message_type
 from rosbridge.logging import getLogger
 logger = getLogger(__name__)
 
-PAYLOAD_FMT = '{timestamp}|time|{time}|id|{id}|c_mode|{c_mode}|num_p|{num_p}|p_state|{p_state}'
+PAYLOAD_FMT = '{timestamp}|time|{time}|camera_id|{id}|c_mode|{c_mode}|num_p|{num_p}|p_state|{p_state}'
 
 
 def convert_ros_to_mqtt(msg):
@@ -24,7 +24,7 @@ def convert_ros_to_mqtt(msg):
     timestamp = datetime.datetime.now(pytz.timezone('Asia/Tokyo')).strftime('%Y-%m-%dT%H:%M:%S.%f%z')
     p_state_arry = []
     for p_state in msg.p_state:
-        s = 'pos[{i}].x={x}, pos[{i}].y={y}, pos[{i}].z={z}, width[{i}]={w}, height[{i}]={h}, feature_hex[{i}]={f}'.format(
+        s = 'pos[{i}].x,{x}/pos[{i}].y,{y}/pos[{i}].z,{z}/width[{i}],{w}/height[{i}],{h}/feature_hex[{i}],{f}'.format(
             i=p_state.i,
             x=p_state.pos.x,
             y=p_state.pos.y,
@@ -40,5 +40,5 @@ def convert_ros_to_mqtt(msg):
                               id=msg.id,
                               c_mode=msg.c_mode,
                               num_p=msg.num_p,
-                              p_state=', '.join(p_state_arry),
+                              p_state='/'.join(p_state_arry),
                               )

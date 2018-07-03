@@ -8,7 +8,7 @@ from rosbridge.msg import r_state as message_type
 from rosbridge.logging import getLogger
 logger = getLogger(__name__)
 
-PAYLOAD_FMT = '{timestamp}|time|{time}|id|{id}|r_mode|{r_mode}|pos.x|{pos_x}|pos.y|{pos_y}|pos.z|{pos_z}'
+PAYLOAD_FMT = '{timestamp}|time|{time}|robot_id|{id}|r_mode|{r_mode}|pos.x|{pos_x}|pos.y|{pos_y}|pos.z|{pos_z}'
 
 
 def convert_ros_to_mqtt(msg):
