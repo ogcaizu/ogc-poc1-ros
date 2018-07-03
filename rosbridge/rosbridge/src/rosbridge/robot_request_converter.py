@@ -26,7 +26,7 @@ def convert_mqtt_to_ros(cmd_data, ros_publisher):
         msg.pos.z = float(cmd_data['pos.z'])
 
         ros_publisher.publish(msg)
-        result = 'success: time={time}, id={id}, r_cmd={r_cmd}, pos.x={pos_x}, pos.y={pos_y}, pos.z={pos_z}'.format(
+        result = 'result,success/time,{time}/id,{id}/r_cmd,{r_cmd}/pos.x,{pos_x}/pos.y,{pos_y}/pos.z,{pos_z}'.format(
             time=msg.time,
             id=msg.id,
             r_cmd=msg.r_cmd,

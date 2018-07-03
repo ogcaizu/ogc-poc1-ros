@@ -23,7 +23,7 @@ def convert_mqtt_to_ros(cmd_data, ros_publisher):
         msg.c_cmd = c_cmd
 
         ros_publisher.publish(msg)
-        result = 'success: time={time}, id={id}, c_cmd={c_cmd}'.format(
+        result = 'result,success/time,{time}/id,{id}/c_cmd,{c_cmd}'.format(
             time=msg.time,
             id=msg.id,
             c_cmd=msg.c_cmd,
