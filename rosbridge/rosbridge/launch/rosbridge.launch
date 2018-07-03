@@ -9,4 +9,9 @@
     <rosparam command="load" file="$(find rosbridge)/config/mqtt.yaml"/>
     <rosparam command="load" file="$(find rosbridge)/config/robot_state.yaml"/>
   </node>
+  <node name="external_camera_request" pkg="rosbridge" type="external_camera_request.py" output="screen">
+    <rosparam command="delete" param=""/>
+    <rosparam command="load" file="$(find rosbridge)/config/mqtt.yaml"/>
+    <rosparam command="load" file="$(find rosbridge)/config/external_camera_request.yaml"/>
+  </node>
 </launch>

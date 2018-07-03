@@ -52,6 +52,7 @@ add_message_files(
   FILES
   r_req.msg
   r_state.msg
+  c_req.msg
 )
 
 ## Generate services in the 'srv' folder
