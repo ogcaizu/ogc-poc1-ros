@@ -1,4 +1,4 @@
-# ogc-poc1-ros
+# ogc-poc1-rosbridge
 
 ## Requirements
 
