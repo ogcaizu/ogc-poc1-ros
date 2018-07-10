@@ -3,7 +3,8 @@ import datetime
 
 import pytz
 
-from rosbridge.msg import r_state as message_type
+# from rosbridge.msg import r_state as message_type
+from office_guide_robot.msg import r_state as message_type
 
 from rosbridge.logging import getLogger
 logger = getLogger(__name__)
