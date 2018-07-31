@@ -1,4 +1,0 @@
-destination: "fiware2ros"
-topics:
-  mqtt: "/external_camera/external_camera"
-  ros: "/ExternalCamera/request"

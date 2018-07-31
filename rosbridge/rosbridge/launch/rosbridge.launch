@@ -1,22 +1,52 @@
 <launch>
-  <node name="robot_request" pkg="rosbridge" type="robot_request.py" output="screen">
+  <node name="robot_request_1f" pkg="rosbridge" type="robot_request.py" output="screen">
     <rosparam command="delete" param=""/>
     <rosparam command="load" file="$(find rosbridge)/config/mqtt.yaml"/>
-    <rosparam command="load" file="$(find rosbridge)/config/robot_request.yaml"/>
+    <rosparam command="load" file="$(find rosbridge)/config/robot_request_1f.yaml"/>
   </node>
-  <node name="robot_state" pkg="rosbridge" type="robot_state.py" output="screen">
+  <node name="robot_request_2f" pkg="rosbridge" type="robot_request.py" output="screen">
     <rosparam command="delete" param=""/>
     <rosparam command="load" file="$(find rosbridge)/config/mqtt.yaml"/>
-    <rosparam command="load" file="$(find rosbridge)/config/robot_state.yaml"/>
+    <rosparam command="load" file="$(find rosbridge)/config/robot_request_2f.yaml"/>
   </node>
-  <node name="external_camera_request" pkg="rosbridge" type="external_camera_request.py" output="screen">
+  <node name="robot_state_1f" pkg="rosbridge" type="robot_state.py" output="screen">
     <rosparam command="delete" param=""/>
     <rosparam command="load" file="$(find rosbridge)/config/mqtt.yaml"/>
-    <rosparam command="load" file="$(find rosbridge)/config/external_camera_request.yaml"/>
+    <rosparam command="load" file="$(find rosbridge)/config/robot_state_1f.yaml"/>
   </node>
-  <node name="external_camera_state" pkg="rosbridge" type="external_camera_state.py" output="screen">
+  <node name="robot_state_2f" pkg="rosbridge" type="robot_state.py" output="screen">
     <rosparam command="delete" param=""/>
     <rosparam command="load" file="$(find rosbridge)/config/mqtt.yaml"/>
-    <rosparam command="load" file="$(find rosbridge)/config/external_camera_state.yaml"/>
+    <rosparam command="load" file="$(find rosbridge)/config/robot_state_2f.yaml"/>
+  </node>
+  <node name="external_camera_request_1f_1" pkg="rosbridge" type="external_camera_request.py" output="screen">
+    <rosparam command="delete" param=""/>
+    <rosparam command="load" file="$(find rosbridge)/config/mqtt.yaml"/>
+    <rosparam command="load" file="$(find rosbridge)/config/external_camera_request_1f_1.yaml"/>
+  </node>
+  <node name="external_camera_request_1f_2" pkg="rosbridge" type="external_camera_request.py" output="screen">
+    <rosparam command="delete" param=""/>
+    <rosparam command="load" file="$(find rosbridge)/config/mqtt.yaml"/>
+    <rosparam command="load" file="$(find rosbridge)/config/external_camera_request_1f_2.yaml"/>
+  </node>
+  <node name="external_camera_request_2f_1" pkg="rosbridge" type="external_camera_request.py" output="screen">
+    <rosparam command="delete" param=""/>
+    <rosparam command="load" file="$(find rosbridge)/config/mqtt.yaml"/>
+    <rosparam command="load" file="$(find rosbridge)/config/external_camera_request_2f_1.yaml"/>
+  </node>
+  <node name="external_camera_state_1f_1" pkg="rosbridge" type="external_camera_state.py" output="screen">
+    <rosparam command="delete" param=""/>
+    <rosparam command="load" file="$(find rosbridge)/config/mqtt.yaml"/>
+    <rosparam command="load" file="$(find rosbridge)/config/external_camera_state_1f_1.yaml"/>
+  </node>
+  <node name="external_camera_state_1f_2" pkg="rosbridge" type="external_camera_state.py" output="screen">
+    <rosparam command="delete" param=""/>
+    <rosparam command="load" file="$(find rosbridge)/config/mqtt.yaml"/>
+    <rosparam command="load" file="$(find rosbridge)/config/external_camera_state_1f_2.yaml"/>
+  </node>
+  <node name="external_camera_state_2f_1" pkg="rosbridge" type="external_camera_state.py" output="screen">
+    <rosparam command="delete" param=""/>
+    <rosparam command="load" file="$(find rosbridge)/config/mqtt.yaml"/>
+    <rosparam command="load" file="$(find rosbridge)/config/external_camera_state_2f_1.yaml"/>
   </node>
 </launch>

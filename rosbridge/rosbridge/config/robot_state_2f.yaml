@@ -1,0 +1,4 @@
+destination: "ros2fiware"
+topics:
+  mqtt: "/guide_robot/guide_robot_0000000000000002"
+  ros: "/Robot2F-1/state"

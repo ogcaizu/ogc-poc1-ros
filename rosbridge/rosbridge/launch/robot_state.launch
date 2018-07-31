@@ -1,7 +1,12 @@
 <launch>
-  <node name="robot_state" pkg="rosbridge" type="robot_state.py" output="screen">
+  <node name="robot_state_1f" pkg="rosbridge" type="robot_state.py" output="screen">
     <rosparam command="delete" param=""/>
     <rosparam command="load" file="$(find rosbridge)/config/mqtt.yaml"/>
-    <rosparam command="load" file="$(find rosbridge)/config/robot_state.yaml"/>
+    <rosparam command="load" file="$(find rosbridge)/config/robot_state_1f.yaml"/>
+  </node>
+  <node name="robot_state_2f" pkg="rosbridge" type="robot_state.py" output="screen">
+    <rosparam command="delete" param=""/>
+    <rosparam command="load" file="$(find rosbridge)/config/mqtt.yaml"/>
+    <rosparam command="load" file="$(find rosbridge)/config/robot_state_2f.yaml"/>
   </node>
 </launch>
