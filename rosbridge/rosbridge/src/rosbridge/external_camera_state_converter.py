@@ -3,12 +3,12 @@ import datetime
 
 import pytz
 
-from rosbridge.msg import c_state as message_type
+from external_camera.msg import c_state as message_type
 
 from rosbridge.logging import getLogger
 logger = getLogger(__name__)
 
-PAYLOAD_FMT = '{timestamp}|time|{time}|camera_id|{id}|c_mode|{c_mode}|num_p|{num_p}|p_state|{p_state}'
+PAYLOAD_FMT = '{timestamp}|time|{time}|c_mode|{c_mode}|num_p|{num_p}|position|{position}'
 
 
 def convert_ros_to_mqtt(msg):
@@ -23,22 +23,17 @@ def convert_ros_to_mqtt(msg):
 
     timestamp = datetime.datetime.now(pytz.timezone('Asia/Tokyo')).strftime('%Y-%m-%dT%H:%M:%S.%f%z')
     p_state_arry = []
-    for p_state in msg.p_state:
-        s = 'pos[{i}].x,{x}/pos[{i}].y,{y}/pos[{i}].z,{z}/width[{i}],{w}/height[{i}],{h}/feature_hex[{i}],{f}'.format(
-            i=p_state.i,
-            x=p_state.pos.x,
-            y=p_state.pos.y,
-            z=p_state.pos.z,
-            w=p_state.size.width,
-            h=p_state.size.height,
-            f=p_state.feature.encode('hex'),
+    for i, pos in enumerate(msg.position):
+        s = 'x[{i}],{x}/y[{i}],{y}'.format(
+            i=i,
+            x=pos.x,
+            y=pos.y,
         )
         p_state_arry.append(s)
 
     return PAYLOAD_FMT.format(timestamp=timestamp,
                               time=msg.time,
-                              id=msg.id,
                               c_mode=msg.c_mode,
                               num_p=msg.num_p,
-                              p_state='/'.join(p_state_arry),
+                              position='/'.join(p_state_arry),
                               )
