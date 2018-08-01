@@ -22,18 +22,18 @@ def convert_ros_to_mqtt(msg):
         return
 
     timestamp = datetime.datetime.now(pytz.timezone('Asia/Tokyo')).strftime('%Y-%m-%dT%H:%M:%S.%f%z')
-    p_state_arry = []
+    position_arry = []
     for i, pos in enumerate(msg.position):
         s = 'x[{i}],{x}/y[{i}],{y}'.format(
             i=i,
             x=pos.x,
             y=pos.y,
         )
-        p_state_arry.append(s)
+        position_arry.append(s)
 
     return PAYLOAD_FMT.format(timestamp=timestamp,
                               time=msg.time,
                               c_mode=msg.c_mode,
                               num_p=msg.num_p,
-                              position='/'.join(p_state_arry),
+                              position='/'.join(position_arry) if len(msg.position) > 0 else '-',
                               )
