@@ -20,8 +20,8 @@ def convert_mqtt_to_ros(cmd_data, ros_publisher):
         msg = message_type()
         msg.time = datetime.datetime.now(pytz.timezone('Asia/Tokyo')).strftime('%Y-%m-%d %H:%M:%S')
         msg.r_cmd = r_cmd
-        msg.pos.x = float(cmd_data['pos.x'])
-        msg.pos.y = float(cmd_data['pos.y'])
+        msg.pos.x = float(cmd_data['x'])
+        msg.pos.y = float(cmd_data['y'])
 
         ros_publisher.publish(msg)
         result = 'result,success/time,{time}/r_cmd,{r_cmd}/pos.x,{pos_x}/pos.y,{pos_y}'.format(

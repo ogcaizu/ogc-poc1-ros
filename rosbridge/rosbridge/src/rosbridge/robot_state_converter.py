@@ -8,7 +8,7 @@ from office_guide_robot.msg import r_state as message_type
 from rosbridge.logging import getLogger
 logger = getLogger(__name__)
 
-PAYLOAD_FMT = '{timestamp}|time|{time}|r_mode|{r_mode}|pos.x|{pos_x}|pos.y|{pos_y}|pos.theta|{pos_theta}'
+PAYLOAD_FMT = '{timestamp}|time|{time}|r_mode|{r_mode}|x|{x}|y|{y}|theta|{theta}'
 
 
 def convert_ros_to_mqtt(msg):
@@ -25,7 +25,7 @@ def convert_ros_to_mqtt(msg):
     return PAYLOAD_FMT.format(timestamp=timestamp,
                               time=msg.time,
                               r_mode=msg.r_mode,
-                              pos_x=msg.pos.x,
-                              pos_y=msg.pos.y,
-                              pos_theta=msg.pos.theta,
+                              x=msg.pos.x,
+                              y=msg.pos.y,
+                              theta=msg.pos.theta,
                               )
