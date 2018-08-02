@@ -3,7 +3,7 @@ import datetime
 
 import pytz
 
-from rosbridge.msg import c_req as message_type
+from external_camera.msg import c_req as message_type
 
 from rosbridge.logging import getLogger
 logger = getLogger(__name__)
@@ -19,13 +19,11 @@ def convert_mqtt_to_ros(cmd_data, ros_publisher):
 
         msg = message_type()
         msg.time = datetime.datetime.now(pytz.timezone('Asia/Tokyo')).strftime('%Y-%m-%d %H:%M:%S')
-        msg.id = int(cmd_data['camera_id'])
         msg.c_cmd = c_cmd
 
         ros_publisher.publish(msg)
-        result = 'result,success/time,{time}/id,{id}/c_cmd,{c_cmd}'.format(
+        result = 'result,success/time,{time}/c_cmd,{c_cmd}'.format(
             time=msg.time,
-            id=msg.id,
             c_cmd=msg.c_cmd,
         )
         logger.infof(result)

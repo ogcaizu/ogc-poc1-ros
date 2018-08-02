@@ -1,4 +1,0 @@
-destination: "fiware2ros"
-topics:
-  mqtt: "/guide_robot/guide_robot"
-  ros: "/Robot/request"
