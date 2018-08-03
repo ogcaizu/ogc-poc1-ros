@@ -1,4 +1,4 @@
 destination: "ros2fiware"
 topics:
   mqtt: "/guide_robot/guide_robot_0000000000000001"
-  ros: "/Robot1F-1/state"
+  ros: "/robot_1f_1/state"
