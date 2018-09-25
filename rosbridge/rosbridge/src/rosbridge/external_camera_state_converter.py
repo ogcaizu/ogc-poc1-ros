@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 import datetime
 
-import pytz
-
 from external_camera.msg import c_state as message_type
 
 from rosbridge.logging import getLogger
@@ -11,7 +9,7 @@ logger = getLogger(__name__)
 PAYLOAD_FMT = '{timestamp}|time|{time}|c_mode|{c_mode}|num_p|{num_p}|position|{position}'
 
 
-def convert_ros_to_mqtt(msg):
+def convert_ros_to_mqtt(tz, msg):
     logger.infof('convert ros to mqtt, msg={}', str(msg).replace('\n', ' '))
     if not isinstance(msg, message_type):
         logger.errorf('failure: message type error')
@@ -21,7 +19,7 @@ def convert_ros_to_mqtt(msg):
         logger.warnf('failure: unknown c_mode, c_mode="{}"'.format(msg.c_mode))
         return
 
-    timestamp = datetime.datetime.now(pytz.timezone('Asia/Tokyo')).strftime('%Y-%m-%dT%H:%M:%S.%f%z')
+    timestamp = datetime.datetime.now(tz).strftime('%Y-%m-%dT%H:%M:%S.%f%z')
     position_arry = []
     for i, pos in enumerate(msg.position):
         s = 'x[{i}],{x}/y[{i}],{y}'.format(

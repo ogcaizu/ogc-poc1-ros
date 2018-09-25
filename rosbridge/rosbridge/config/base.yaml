@@ -1,0 +1,3 @@
+thresholds:
+  send_interval_millisec: 1000
+timezone: "Asia/Tokyo"

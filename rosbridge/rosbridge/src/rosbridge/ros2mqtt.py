@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import os
 
+import pytz
+
 import rospy
 
 from rosbridge.base import MQTTBase
@@ -14,6 +16,7 @@ class Ros2MQTT(MQTTBase):
         self._params = params
         self._converter = converter
         self._message_type = message_type
+        self._tz = pytz.timezone(self._params["timezone"])
         super(Ros2MQTT, self).__init__()
 
     def start(self):
@@ -24,7 +27,7 @@ class Ros2MQTT(MQTTBase):
 
     def _on_receive(self, msg):
         logger.infof('received message from ros : {}', str(msg).replace('\n', ' '))
-        result = self._converter(msg)
+        result = self._converter(self._tz, msg)
 
         if result:
             attr_topic = os.path.join(self._params['topics']['mqtt'], 'attrs')

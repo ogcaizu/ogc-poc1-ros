@@ -2,6 +2,8 @@
 import os
 import re
 
+import pytz
+
 import rospy
 
 from rosbridge.base import MQTTBase
@@ -18,6 +20,7 @@ class MQTT2Ros(MQTTBase):
         self._params = params
         self._converter = converter
         self._message_type = message_type
+        self._tz = pytz.timezone(self._params["timezone"])
         super(MQTT2Ros, self).__init__()
 
     def start(self):
@@ -42,7 +45,7 @@ class MQTT2Ros(MQTTBase):
             value = matcher.group('value')
 
             cmd_data = dict(zip(*[iter(value.split('|'))]*2))
-            result = self._converter(cmd_data, self.__ros_pub)
+            result = self._converter(self._tz, cmd_data, self.__ros_pub)
 
             result_topic = os.path.join(self._params['topics']['mqtt'], 'cmdexe')
             client.publish(result_topic, RESULT_FMT.format(device_id=device_id, command=command, result=result))
