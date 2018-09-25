@@ -3,15 +3,18 @@
     <rosparam command="delete" param=""/>
     <rosparam command="load" file="$(find rosbridge)/config/mqtt.yaml"/>
     <rosparam command="load" file="$(find rosbridge)/config/external_camera_state_1f_1.yaml"/>
+    <param name="mqtt/cafile" value="$(find rosbridge)/certs/DST_Root_CA_X3.pem"/>
   </node>
   <node name="external_camera_state_1f_2" pkg="rosbridge" type="external_camera_state.py" output="screen">
     <rosparam command="delete" param=""/>
     <rosparam command="load" file="$(find rosbridge)/config/mqtt.yaml"/>
     <rosparam command="load" file="$(find rosbridge)/config/external_camera_state_1f_2.yaml"/>
+    <param name="mqtt/cafile" value="$(find rosbridge)/certs/DST_Root_CA_X3.pem"/>
   </node>
   <node name="external_camera_state_2f_1" pkg="rosbridge" type="external_camera_state.py" output="screen">
     <rosparam command="delete" param=""/>
     <rosparam command="load" file="$(find rosbridge)/config/mqtt.yaml"/>
     <rosparam command="load" file="$(find rosbridge)/config/external_camera_state_2f_1.yaml"/>
+    <param name="mqtt/cafile" value="$(find rosbridge)/certs/DST_Root_CA_X3.pem"/>
   </node>
 </launch>

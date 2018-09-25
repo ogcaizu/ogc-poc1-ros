@@ -3,7 +3,6 @@ MAINTAINER Nobuyuki Matsui <nobuyuki.matsui@gmail.com>
 
 ENV PYTHONUNBUFFERED 1
 
-COPY ./secrets/ca.crt /opt/secrets/ca.crt
 COPY ./entrypoint.sh /opt/entrypoint.sh
 COPY ./rosbridge /opt/ros_ws/src/rosbridge
 COPY ./office_guide_robot /opt/ros_ws/src/office_guide_robot
