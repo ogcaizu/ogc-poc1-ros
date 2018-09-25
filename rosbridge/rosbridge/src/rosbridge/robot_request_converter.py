@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
 import datetime
 
-import pytz
-
 from office_guide_robot.msg import r_req as message_type
 
 from rosbridge.logging import getLogger
 logger = getLogger(__name__)
 
 
-def convert_mqtt_to_ros(cmd_data, ros_publisher):
+def convert_mqtt_to_ros(tz, cmd_data, ros_publisher):
     logger.infof('convert mqtt to ros, cmd_data={}', cmd_data)
 
     try:
@@ -18,7 +16,7 @@ def convert_mqtt_to_ros(cmd_data, ros_publisher):
             return 'failure: unknown r_cmd, r_cmd="{}"'.format(r_cmd)
 
         msg = message_type()
-        msg.time = datetime.datetime.now(pytz.timezone('Asia/Tokyo')).strftime('%Y-%m-%d %H:%M:%S')
+        msg.time = datetime.datetime.now(tz).strftime('%Y-%m-%d %H:%M:%S')
         msg.r_cmd = r_cmd
         msg.pos.x = float(cmd_data['x'])
         msg.pos.y = float(cmd_data['y'])

@@ -3,4 +3,3 @@ mqtt:
   port: ${MQTT_PORT}
   username: "${MQTT_USERNAME}"
   password: "${MQTT_PASSWORD}"
-  cafile: "${CA_FILE}"

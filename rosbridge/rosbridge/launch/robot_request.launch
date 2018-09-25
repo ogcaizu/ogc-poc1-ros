@@ -2,11 +2,15 @@
   <node name="robot_request_1f" pkg="rosbridge" type="robot_request.py" output="screen">
     <rosparam command="delete" param=""/>
     <rosparam command="load" file="$(find rosbridge)/config/mqtt.yaml"/>
+    <rosparam command="load" file="$(find rosbridge)/config/base.yaml"/>
     <rosparam command="load" file="$(find rosbridge)/config/robot_request_1f.yaml"/>
+    <param name="mqtt/cafile" value="$(find rosbridge)/certs/DST_Root_CA_X3.pem"/>
   </node>
   <node name="robot_request_2f" pkg="rosbridge" type="robot_request.py" output="screen">
     <rosparam command="delete" param=""/>
     <rosparam command="load" file="$(find rosbridge)/config/mqtt.yaml"/>
+    <rosparam command="load" file="$(find rosbridge)/config/base.yaml"/>
     <rosparam command="load" file="$(find rosbridge)/config/robot_request_2f.yaml"/>
+    <param name="mqtt/cafile" value="$(find rosbridge)/certs/DST_Root_CA_X3.pem"/>
   </node>
 </launch>
